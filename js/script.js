@@ -1,11 +1,9 @@
 jQuery(document).ready(function($) {
-    // Check if jQuery is loaded
     if (typeof $ === 'undefined') {
         console.error('jQuery is not loaded. Plugin cannot function.');
         return;
     }
 
-    // === DOM Elements ===
     const $bookSearchInput = $('#book-search-input');
     const $bookSearchButton = $('#book-search-button');
     const $searchResultsDiv = $('#search-results');
@@ -21,7 +19,6 @@ jQuery(document).ready(function($) {
     const $cursorStyleSelect = $('#cursor-style');
     const $highlightColorInput = $('#highlight-color');
 
-    // === Check AJAX Configuration ===
     if (typeof myBookReviewsData === 'undefined' || !myBookReviewsData.ajaxurl || !myBookReviewsData.nonce) {
         console.error('myBookReviewsData is undefined or missing properties. Ensure wp_localize_script is set up correctly.');
         if ($searchResultsDiv.length) {
@@ -33,7 +30,6 @@ jQuery(document).ready(function($) {
     const ajaxurl = myBookReviewsData.ajaxurl;
     const nonce = myBookReviewsData.nonce;
 
-    // === Customization Functions ===
     const applyTheme = (theme) => {
         $('body').toggleClass('dark-mode', theme === 'dark');
         localStorage.setItem('theme', theme);
@@ -56,7 +52,6 @@ jQuery(document).ready(function($) {
         localStorage.setItem('highlightColor', color);
     };
 
-    // Apply saved customization settings
     if ($darkModeToggle.length) {
         const savedTheme = localStorage.getItem('theme') || 'light';
         applyTheme(savedTheme);
@@ -88,7 +83,6 @@ jQuery(document).ready(function($) {
         });
     }
 
-    // === Text-to-Speech ===
     const speakText = (text) => {
         if ('speechSynthesis' in window) {
             if (speechSynthesis.speaking) {
@@ -107,7 +101,6 @@ jQuery(document).ready(function($) {
         }
     };
 
-    // === Display Messages ===
     const displayMessage = (message, type = 'success') => {
         if ($formMessageDiv.length) {
             $formMessageDiv.text(message).removeClass().addClass(`message ${type}`).show();
@@ -119,7 +112,6 @@ jQuery(document).ready(function($) {
         }
     };
 
-    // === Debounce for Search ===
     const debounce = (func, delay) => {
         let timeoutId;
         return function() {
@@ -130,7 +122,6 @@ jQuery(document).ready(function($) {
         };
     };
 
-    // === Book Search ===
     const performSearch = () => {
         if (!$bookSearchInput.length || !$searchResultsDiv.length) {
             console.error('Search input or results div not found.');
@@ -200,7 +191,6 @@ jQuery(document).ready(function($) {
         console.warn('Search input (#book-search-input) not found.');
     }
 
-    // === Select Book ===
     if ($searchResultsDiv.length) {
         $searchResultsDiv.on('click', '.select-book-btn', function() {
             const $bookCard = $(this).closest('.book-card');
@@ -226,7 +216,6 @@ jQuery(document).ready(function($) {
         console.warn('Search results div (#search-results) not found.');
     }
 
-    // === Review Submission ===
     if ($reviewForm.length) {
         $reviewForm.on('submit', function(event) {
             event.preventDefault();
@@ -275,7 +264,6 @@ jQuery(document).ready(function($) {
         console.warn('Review form (#review-form) not found.');
     }
 
-    // === Fetch and Display Reviews ===
     const fetchAndDisplayReviews = () => {
         if (!$reviewsDisplayDiv.length) {
             console.error('Reviews display div (#reviews-display) not found.');
@@ -322,7 +310,6 @@ jQuery(document).ready(function($) {
         });
     };
 
-    // === Read Aloud ===
     if ($reviewsDisplayDiv.length) {
         $reviewsDisplayDiv.on('click', '.read-aloud-button', function() {
             const textId = $(this).data('text-id');
@@ -335,6 +322,5 @@ jQuery(document).ready(function($) {
         });
     }
 
-    // Initial load of reviews
     fetchAndDisplayReviews();
 });

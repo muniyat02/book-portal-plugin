@@ -3,14 +3,12 @@
  * Plugin Name: My Book Reviews App
  * Description: A custom plugin for searching books and submitting/displaying reviews.
  * Version: 1.2
- * Author: Your Name
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// === 1. PLUGIN ACTIVATION & DEACTIVATION ===
 
 function my_book_reviews_install() {
     global $wpdb;
@@ -38,7 +36,7 @@ function my_book_reviews_install() {
 register_activation_hook( __FILE__, 'my_book_reviews_install' );
 
 function my_book_reviews_deactivate() {
-    // Non-destructive
+    
 }
 register_deactivation_hook( __FILE__, 'my_book_reviews_deactivate' );
 
@@ -49,7 +47,6 @@ function my_book_reviews_uninstall() {
 }
 register_uninstall_hook( __FILE__, 'my_book_reviews_uninstall' );
 
-// === 2. AJAX HANDLERS ===
 
 function my_book_reviews_ajax_search_books() {
     if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'my_book_reviews_nonce' ) ) {
@@ -109,8 +106,7 @@ function my_book_reviews_ajax_submit_review() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'book_reviews';
 
-    $data = $_POST; // Use $_POST for simplicity
-
+    $data = $_POST; 
     if ( ! isset( $data['book_title'], $data['reviewer_name'], $data['review_text'], $data['rating'], $data['book_openlibrary_id'] ) ) {
         wp_send_json_error( array( 'message' => 'Missing required fields for review submission.' ) );
     }
@@ -166,7 +162,6 @@ function my_book_reviews_ajax_get_reviews() {
 add_action( 'wp_ajax_get_reviews', 'my_book_reviews_ajax_get_reviews' );
 add_action( 'wp_ajax_nopriv_get_reviews', 'my_book_reviews_ajax_get_reviews' );
 
-// === 3. SHORTCODES ===
 
 function my_book_reviews_search_form_shortcode() {
     ob_start();

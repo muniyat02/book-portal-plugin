@@ -1,9 +1,8 @@
-/* Universal Box Sizing */
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-/* CSS Custom Properties */
 :root {
     --background-color: #f8f8f8;
     --text-color: #333;
@@ -60,7 +59,6 @@ body.dark-mode {
     --review-item-small: #aaa;
 }
 
-/* Base Body Styles */
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -75,7 +73,6 @@ body {
     align-items: flex-start;
 }
 
-/* Container */
 .container {
     max-width: 960px;
     width: 100%;
@@ -83,7 +80,6 @@ body {
     padding: 0 15px;
 }
 
-/* Section Styling */
 .section {
     background-color: var(--section-bg);
     border-radius: 12px;
@@ -93,7 +89,6 @@ body {
     border: 1px solid var(--section-border);
 }
 
-/* Headings */
 h1, h3, h4 {
     color: var(--heading-color);
     margin-top: 0;
@@ -108,7 +103,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Input Fields */
 .input-field {
     width: 100%;
     padding: 12px;
@@ -127,7 +121,6 @@ h1 {
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
-/* Buttons */
 .btn {
     background-color: var(--btn-bg);
     color: white;
@@ -154,7 +147,6 @@ body.dark-mode .btn {
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-/* Search Input Group */
 .search-input-group {
     display: flex;
     gap: 10px;
@@ -166,7 +158,6 @@ body.dark-mode .btn {
     margin-bottom: 0;
 }
 
-/* Search Results Grid */
 .search-results {
     margin-top: 20px;
     padding-top: 20px;
@@ -225,7 +216,6 @@ body.dark-mode .btn {
     background-color: #218838;
 }
 
-/* Review Form */
 .form-group label {
     display: block;
     margin-bottom: 8px;
@@ -237,7 +227,6 @@ body.dark-mode .btn {
     width: 100%;
 }
 
-/* Review List */
 .book-reviews-list {
     text-align: center;
 }
@@ -275,7 +264,6 @@ body.dark-mode .btn {
     font-size: 0.8em;
 }
 
-/* Read Aloud Button */
 .read-aloud-button {
     background-color: var(--read-aloud-bg);
     color: white;
@@ -292,7 +280,6 @@ body.dark-mode .btn {
     background-color: var(--read-aloud-hover-bg);
 }
 
-/* Customization Controls */
 .custom-style-controls .control-group {
     margin-bottom: 15px;
 }
