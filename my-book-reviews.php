@@ -11,28 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-
-// Function to enqueue the CSS file.
-function my_book_reviews_enqueue_styles() {
-    wp_enqueue_style(
-        'my-book-reviews-style', // Unique name for the stylesheet
-        plugins_url('css/style.css', __FILE__)
-    );
-}
-add_action('wp_enqueue_scripts', 'my_book_reviews_enqueue_styles');
-
-// Function to enqueue the JavaScript file.
-function my_book_reviews_enqueue_scripts() {
-    wp_enqueue_script(
-        'my-book-reviews-script', // Unique name for the script
-        plugins_url('js/script.js', __FILE__),
-        array('jquery'), // Make sure jQuery is loaded before your script
-        '1.0', // Version number
-        true // Load the script in the footer for performance
-    );
-}
-add_action('wp_enqueue_scripts', 'my_book_reviews_enqueue_scripts');
-
 // Your plugin's PHP code will go below this line.
 
 // =======================================================================================
@@ -353,7 +331,3 @@ function my_book_reviews_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'my_book_reviews_enqueue_assets' );
 
 ?>
-
-
-
-
